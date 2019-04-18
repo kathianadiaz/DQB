@@ -137,7 +137,7 @@ def t_PREDICT_MOVES(t):
     return t
 
 def t_DISPLAY(t):
-    r''DISPLAY 
+    r'DISPLAY' 
     t.value = 'DISPLAY'
     return t
 
@@ -227,5 +227,24 @@ def t_PREDICTIVE_LAYER(t):
     return t
 
 
+#Initializes lexer
+
+lexer = lex.lex()
+
+try:
+   DQB_test = open("test.txt", 'r')
+except IOError:
+   print("Error opening file")
+   exit()
+
+fileText = DQB_test.read()
+lexer.input(fileText)
+
+ # Tokenize
+
+while True:
+  tok = lexer.token()
+  if not tok:
+     break    
 
 
