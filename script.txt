@@ -1,0 +1,38 @@
+main(){
+
+
+	ENVIRONMENT: BrickBreaker
+	AGENT : BBA {
+
+MODEL_PARAMETERS{
+
+		Learning_Rate = 0.10
+		Epsilon_Start = 1.0
+		Epsilon_End = 0.10
+		Exploration_Steps = 1000000
+		Batch_Size = 16
+		Discount_Factor  = 0.90
+		No_Op_Steps = 30
+		Action_Size = 3
+	}
+
+	NETWORK: {
+	        add(ConvolutionalLayers)
+			add(PredictiveLayers)
+
+			}
+
+
+
+
+	TRAINING:{
+
+			predictMoves()
+			calculateQ-Values()
+
+			}
+
+
+
+}
+
