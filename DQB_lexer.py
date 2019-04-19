@@ -5,44 +5,44 @@ import ply.lex as lex
 #List of Tokens
 tokens = [
 
-    'INT' 
-    'BOOLEAN'
-    'FLOAT'
-    'CHARACTER'
-    'COMMA' 
-    'CLOSE_PAREN' 
-    'OPEN_PAREN' 
-    'CLOSE_BRACKET' 
-    'OPEN_BRACKET' 
-    'DOS_PUNTITOS'
-    'EQUALS'
-    'DOT'
-    'MAIN'
-    'ENVIRONMENT' 
-    'PONG'
-    'BRICK_BREAKER'
-    'MODEL_PARAMETERS' 
-    'NETWORK'
-    'TRAINING' 
-    'PREDICT_MOVES' 
-    'DISPLAY' 
-    'CALCULATE_Q_VALUES' 
-    'MODEL_CURRENT_STATUS' 
-    'FIND_PROB'
-    'FIT' 
-    'LEARNING_RATE' 
-    'EPSILON_START' 
-    'EPSILON_END' 
-    'EXPLORATION' 
-    'BATCH_SIZE' 
-    'DISCOUNT_FACTOR' 
-    'NO_STEPS' 
-    'ADD'
-    'ACTION_SIZE' 
-    'PREPARE' 
-    'EXECUTE' 
-    'CONV_LAYER' 
-    'PREDICTIVE_LAYER' 
+    'INT',
+    'BOOLEAN',
+    'FLOAT',
+    'CHARACTER',
+    'COMMA',
+    'CLOSE_PAREN',
+    'OPEN_PAREN',
+    'CLOSE_BRACKET',
+    'OPEN_BRACKET',
+    'DOS_PUNTITOS',
+    'EQUALS',
+    'DOT',
+    'MAIN',
+    'ENVIRONMENT',
+    'PONG',
+    'BRICK_BREAKER',
+    'MODEL_PARAMETERS',
+    'NETWORK',
+    'TRAINING',
+    'PREDICT_MOVES',
+    'DISPLAY',
+    'CALCULATE_Q_VALUES',
+    'MODEL_CURRENT_STATUS',
+    'FIND_PROB',
+    'FIT',
+    'LEARNING_RATE',
+    'EPSILON_START',
+    'EPSILON_END',
+    'EXPLORATION',
+    'BATCH_SIZE',
+    'DISCOUNT_FACTOR',
+    'NO_STEPS',
+    'ADD',
+    'ACTION_SIZE',
+    'PREPARE',
+    'EXECUTE',
+    'CONV_LAYER',
+    'PREDICTIVE_LAYER'
 
 ]
 
@@ -71,12 +71,8 @@ t_EQUALS = r'='
 t_DOT = r'.'
 
 
-def t_BOOLEAN(t):
-    if r'true':
-        t.value = 'TRUE'
-    if r'false':
-        t.value = 'FALSE'
-    return t
+def t_error(t):
+    print('lol')
 
 def t_MAIN(t):
     r'main'
@@ -214,7 +210,7 @@ def t_PREDICTIVE_LAYER(t):
 lexer = lex.lex()
 
 try:
-   DQB_test = open("test.txt", 'r')
+    DQB_test = open("script.txt", 'r')
 except IOError:
    print("Error opening file")
    exit()
