@@ -22,6 +22,7 @@ tokens = [
     'PONG',
     'BRICK_BREAKER',
     'MODEL_PARAMETERS',
+    'AGENT',
     'NETWORK',
     'TRAINING',
     'PREDICT_MOVES',
@@ -68,7 +69,7 @@ t_DOS_PUNTITOS = r':'
 
 t_EQUALS = r'='
 
-t_DOT = r'.'
+t_DOT = r'\.'
 
 t_ignore = '\t\n'
 
@@ -84,7 +85,13 @@ def t_ENVIRONMENT(t):
     r"""ENVIRONMENT"""
     t.value = 'ENVIRONMENT'
     return t
-    
+
+def t_AGENT(t):
+    r"""AGENT"""
+    t.value = 'AGENT'
+    return t
+
+
 def t_PONG(t):
     r"""Pong"""
     t.value = 'Pong'

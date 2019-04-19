@@ -1,5 +1,5 @@
 main(){
-	ENVIRONMENT: BrickBreaker
+	ENVIRONMENT:BrickBreaker
 	AGENT : BBA {
 
 MODEL_PARAMETERS{
