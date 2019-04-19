@@ -1,6 +1,4 @@
 main(){
-
-
 	ENVIRONMENT: BrickBreaker
 	AGENT : BBA {
 

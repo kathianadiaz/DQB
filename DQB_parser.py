@@ -93,7 +93,7 @@ def p_calls(p):
 def translate(file):
 
     try:
-        DQB = open(file, 'r')
+        DQB = open(file, "r")
     except IOError:
         print("Error opening File")
         exit()
@@ -101,5 +101,5 @@ def translate(file):
     fileScript = DQB.read()
     parser = yac.yacc()
     parser.parse(fileScript)
-   
+
 

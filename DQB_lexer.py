@@ -70,137 +70,138 @@ t_EQUALS = r'='
 
 t_DOT = r'.'
 
+t_ignore = '\t\n'
 
 def t_error(t):
     print('lol')
 
 def t_MAIN(t):
-    r'main'
+    r"""main"""
     t.value = 'main'
     return t
 
 def t_ENVIRONMENT(t):
-    r'ENVIRONMENT' 
+    r"""ENVIRONMENT"""
     t.value = 'ENVIRONMENT'
     return t
     
 def t_PONG(t):
-    r'Pong'
+    r"""Pong"""
     t.value = 'Pong'
     return t
 
 def t_BRICK_BREAKER(t):
-    r'BrickBreaker'
+    r"""BrickBreaker"""
     t.value = 'BrickBreaker'
     return t
 
 def t_MODEL_PARAMETERS(t):
-    r'MODEL_PARAMETERS' 
+    r"""MODEL_PARAMETERS"""
     t.value = 'MODEL_PARAMETERS'
     return t
 
 def t_NETWORK(t):
-    r'NETWORK' 
+    r"""NETWORK"""
     t.value = 'NETWORK'
     return t
 
 def t_TRAINING(t):
-    r'TRAINING' 
+    r"""TRAINING"""
     t.value = 'TRAINING'
     return t
 
 def t_PREDICT_MOVES(t):
-    r'predict_Moves'
+    r"""predict_Moves"""
     t.value = 'predict_Moves'
     return t
 
 def t_DISPLAY(t):
-    r'DISPLAY' 
+    r"""DISPLAY"""
     t.value = 'DISPLAY'
     return t
 
 def t_CALCULATE_Q_VALUES(t):
-    r'calculateQ_Values'
+    r"""calculateQ_Values"""
     t.value = 'calculateQ_Values'
     return t
 
 def t_MODEL_CURRENT_STATUS(t):
-    r'MODEL_CURRENT_STATUS' 
+    r"""MODEL_CURRENT_STATUS"""
     t.value = 'MODEL_CURRENT_STATUS'
     return t
 
 def t_FIND_PROB(t):
-    r'FIND_PROB' 
+    r"""FIND_PROB"""
     t.value = 'FIND_PROB'
     return t
 
 def t_FIT(t):
-    r'FIT' 
+    r"""FIT"""
     t.value = 'FIT'
     return t
 
 def t_LEARNING_RATE(t):
-    r'LEARNING_RATE' 
+    r"""LEARNING_RATE"""
     t.value = 'Learning_Rate'
     return t
 
 def t_EPSILON_START(t):
-    r'EPSILON_START' 
+    r"""EPSILON_START"""
     t.value = 'Epsilon_Start'
     return t
 
 def t_EPSILON_END(t):
-    r'EPSILON_END' 
+    r"""EPSILON_END"""
     t.value = 'Epsilon_End'
     return t
 
 def t_EXPLORATION(t):
-    r'EXPLORATION' 
+    r"""EXPLORATION"""
     t.value = 'Exploration_Steps'
     return t
 
 def t_BATCH_SIZE(t):
-    r'BATCH_SIZE' 
+    r"""BATCH_SIZE"""
     t.value = 'Batch_Size'
     return t
 
 def t_DISCOUNT_FACTOR(t):
-    r'DISCOUNT_FACTOR' 
+    r"""DISCOUNT_FACTOR"""
     t.value = 'Discount_Factor'
     return t
 
 def t_NO_STEPS(t):
-    r'NO_STEPS' 
+    r"""NO_STEPS"""
     t.value = 'No_Steps'
     return t
 
 def t_ADD(t):
-    r'ADD' 
+    r"""ADD"""
     t.value = 'add'
     return t
 
 def t_ACTION_SIZE(t):
-    r'ACTION_SIZE' 
+    r"""ACTION_SIZE"""
     t.value = 'Action_Size'
     return t
 
 def t_PREPARE(t):
-    r'PREPARE' 
+    r"""PREPARE"""
     t.value = 'PREPARE'
     return t
 
 def t_EXECUTE(t):
-    r'EXECUTE' 
+    r"""EXECUTE"""
     t.value = 'EXECUTE'
     return t
 
 def t_CONV_LAYER(t):
-    r'CONV_LAYER' 
+    r"""CONV_LAYER"""
     t.value = 'ConvolutionalLayers'
     return t
 
 def t_PREDICTIVE_LAYER(t):
-    r'PREDICTIVE_LAYER' 
+    r"""PREDICTIVE_LAYER"""
     t.value = 'PredictiveLayers'
     return t
 
@@ -223,6 +224,7 @@ lexer.input(fileText)
 while True:
   tok = lexer.token()
   if not tok:
-     break    
+    print(tok)
+    break
 
 
