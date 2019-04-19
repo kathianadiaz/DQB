@@ -29,7 +29,7 @@ def ini():
              "from skimage.transform import resize\n" + \
              "from keras.models import Sequential\n" + \
              "from keras.optimizers import RMSprop\n" + \
-             "from keras.layers import Dense, Flatten" \
+             "from keras.layers import Dense, Flatten\n" + \
              "from keras.layers.convolutional import Conv2D\n" + \
              "from keras import backend as K\n" + \
              "EPISODES = 50000\n" + \
@@ -113,11 +113,9 @@ def PredLayers():
              "      return model\n\n"
 
     if algorithm == "QL":
-        py = "      model.add(Dense(64, activation='relu', init='he_uniform'))\n" + \
-             "      model.add(Dense(32, activation='relu', init='he_uniform'))\n" + \
-             "      model.add(Dense(self.action_size, activation='softmax'))\n" + \
-             "      opt = Adam(lr=self.learning_rate)\n" + \
-             "      model.compile(loss='categorical_crossentropy', optimizer=opt) #loss function for clasification\n" + \
+        py = "      model.add(Dense(512, activation='relu'))\n" + \
+             "      model.add(Dense(self.action_size))\n" + \
+             "      model.summary()\n" + \
              "      return model\n\n"
     code.append(py)
 
