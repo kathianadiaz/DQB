@@ -5,7 +5,7 @@ import ply.lex as lex
 #List of Tokens
 tokens = [
 
-    'DIGIT' 
+    'INT' 
     'BOOLEAN'
     'FLOAT'
     'CHARACTER'
@@ -46,54 +46,30 @@ tokens = [
 
 #Regular Expression Rules
 
-def t_DIGIT(t):
-    r'DIGIT/INT' 
-    t.value = 'DIGIT/INT'
-    return t
+t_CHARACTER = r'[a-zA-Z]+_[a-zA-Z]+'
 
-def BOOLEAN(t):
-    r'BOOLEAN' 
-    t.value = 'BOOLEAN'
-    return t
+t_INT = r'[[0-9]+'
 
-def t_FLOAT(t):
-    r'FLOAT' 
-    t.value = 'FLOAT'
-    return t
-    
-def t_CHARACTER(t):
-    r'CHARACTER' 
-    t.value = 'CHARACTER'
-    return t
+t_FLOAT = r'[[0-9]+[.][0-9]+'
 
-def t_COMMA(t):
-    r'COMMA' 
-    t.value = 'COMMA'
-    return t
+t_COMMA = r','
 
-def t_CLOSE_PAREN(t):
-    r'CLOSE_PAREN' 
-    t.value = 'CLOSE_PAREN'
-    return t
+t_OPEN_PAREN = r'\('
 
-def t_OPEN_PAREN(t):
-    r'OPEN_PAREN' 
-    t.value = 'OPEN_PAREN'
-    return t
+t_CLOSE_PAREN = r'\)'
 
-def t_CLOSE_BRACKET(t):
-    r'CLOSE_BRACKET' 
-    t.value = 'CLOSE_BRACKET'
-    return t
+t_OPEN_BRACKET = r'\{'
 
-def t_OPEN_BRACKET(t):
-    r'OPEN_BRACKET' 
-    t.value = 'OPEN_BRACKET'
-    return t
+t_CLOSE_BRACKET = r'\}'
 
-def t_DOS_PUNTITOS(t):
-    r'DOS_PUNTITOS' 
-    t.value = 'DOS_PUNTITOS'
+t_DOS_PUNTITOS = r':'
+
+
+def t_BOOLEAN(t):
+    if r'true':
+        t.value = 'TRUE'
+    if r'false':
+        t.value = 'FALSE'
     return t
 
 def t_MAIN(t):
