@@ -89,6 +89,9 @@ def p_calls(p):
     """calls : EXECUTE OPEN_PAREN CLOSE_PAREN"""
     ml.generate()
 
+def p_error(p):
+    print("error")
+    exit()
 
 def translate(file):
 
