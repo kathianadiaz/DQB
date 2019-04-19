@@ -79,8 +79,8 @@ def t_BOOLEAN(t):
     return t
 
 def t_MAIN(t):
-    r'MAIN' 
-    t.value = 'MAIN'
+    r'main'
+    t.value = 'main'
     return t
 
 def t_ENVIRONMENT(t):
@@ -89,13 +89,13 @@ def t_ENVIRONMENT(t):
     return t
     
 def t_PONG(t):
-    r'PONG' 
-    t.value = 'PONG'
+    r'Pong'
+    t.value = 'Pong'
     return t
 
 def t_BRICK_BREAKER(t):
-    r'BRICK_BREAKER' 
-    t.value = 'BRICK_BREAKER'
+    r'BrickBreaker'
+    t.value = 'BrickBreaker'
     return t
 
 def t_MODEL_PARAMETERS(t):
@@ -114,8 +114,8 @@ def t_TRAINING(t):
     return t
 
 def t_PREDICT_MOVES(t):
-    r'PREDICT_MOVES' 
-    t.value = 'PREDICT_MOVES'
+    r'predict_Moves'
+    t.value = 'predict_Moves'
     return t
 
 def t_DISPLAY(t):
@@ -124,8 +124,8 @@ def t_DISPLAY(t):
     return t
 
 def t_CALCULATE_Q_VALUES(t):
-    r'CALCULATE_Q_VALUES' 
-    t.value = 'CALCULATE_Q_VALUES'
+    r'calculateQ_Values'
+    t.value = 'calculateQ_Values'
     return t
 
 def t_MODEL_CURRENT_STATUS(t):
@@ -145,47 +145,47 @@ def t_FIT(t):
 
 def t_LEARNING_RATE(t):
     r'LEARNING_RATE' 
-    t.value = 'LEARNING_RATE'
+    t.value = 'Learning_Rate'
     return t
 
 def t_EPSILON_START(t):
     r'EPSILON_START' 
-    t.value = 'EPSILON_START'
+    t.value = 'Epsilon_Start'
     return t
 
 def t_EPSILON_END(t):
     r'EPSILON_END' 
-    t.value = 'EPSILON_END'
+    t.value = 'Epsilon_End'
     return t
 
 def t_EXPLORATION(t):
     r'EXPLORATION' 
-    t.value = 'EXPLORATION'
+    t.value = 'Exploration_Steps'
     return t
 
 def t_BATCH_SIZE(t):
     r'BATCH_SIZE' 
-    t.value = 'BATCH_SIZE'
+    t.value = 'Batch_Size'
     return t
 
 def t_DISCOUNT_FACTOR(t):
     r'DISCOUNT_FACTOR' 
-    t.value = 'DISCOUNT_FACTOR'
+    t.value = 'Discount_Factor'
     return t
 
 def t_NO_STEPS(t):
     r'NO_STEPS' 
-    t.value = 'NO_STEPS'
+    t.value = 'No_Steps'
     return t
 
 def t_ADD(t):
     r'ADD' 
-    t.value = 'ADD'
+    t.value = 'add'
     return t
 
 def t_ACTION_SIZE(t):
     r'ACTION_SIZE' 
-    t.value = 'ACTION_SIZE'
+    t.value = 'Action_Size'
     return t
 
 def t_PREPARE(t):
@@ -200,12 +200,12 @@ def t_EXECUTE(t):
 
 def t_CONV_LAYER(t):
     r'CONV_LAYER' 
-    t.value = 'CONV_LAYER'
+    t.value = 'ConvolutionalLayers'
     return t
 
 def t_PREDICTIVE_LAYER(t):
     r'PREDICTIVE_LAYER' 
-    t.value = 'PREDICTIVE_LAYER'
+    t.value = 'PredictiveLayers'
     return t
 
 

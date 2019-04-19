@@ -12,7 +12,7 @@ MODEL_PARAMETERS{
 		Exploration_Steps = 1000000
 		Batch_Size = 16
 		Discount_Factor  = 0.90
-		No_Op_Steps = 30
+		No_Steps = 30
 		Action_Size = 3
 	}
 
@@ -27,8 +27,8 @@ MODEL_PARAMETERS{
 
 	TRAINING:{
 
-			predictMoves()
-			calculateQ-Values()
+			predict_Moves()
+			calculateQ_Values()
 
 			}
 
