@@ -15,6 +15,8 @@ tokens = [
     'CLOSE_BRACKET' 
     'OPEN_BRACKET' 
     'DOS_PUNTITOS'
+    'EQUALS'
+    'DOT'
     'MAIN'
     'ENVIRONMENT' 
     'PONG'
@@ -63,6 +65,10 @@ t_OPEN_BRACKET = r'\{'
 t_CLOSE_BRACKET = r'\}'
 
 t_DOS_PUNTITOS = r':'
+
+t_EQUALS = r'='
+
+t_DOT = r'.'
 
 
 def t_BOOLEAN(t):
