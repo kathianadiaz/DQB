@@ -28,12 +28,12 @@ tokens = [
     'DISPLAY',
     'CALCULATE_Q_VALUES',
     'MODEL_CURRENT_STATUS',
-    'FIND_PROB',
+    'FIND_PROBABILITIES',
     'FIT',
     'LEARNING_RATE',
     'EPSILON_START',
     'EPSILON_END',
-    'EXPLORATION',
+    'EXPLORATION_STEPS',
     'BATCH_SIZE',
     'DISCOUNT_FACTOR',
     'NO_STEPS',
@@ -130,9 +130,9 @@ def t_MODEL_CURRENT_STATUS(t):
     t.value = 'MODEL_CURRENT_STATUS'
     return t
 
-def t_FIND_PROB(t):
-    r"""FIND_PROB"""
-    t.value = 'FIND_PROB'
+def t_FIND_PROBABILITIES(t):
+    r"""FIND_PROBABILITIES"""
+    t.value = 'FIND_PROBABILITIES'
     return t
 
 def t_FIT(t):

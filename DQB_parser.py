@@ -11,13 +11,13 @@ def p_main(p):
 
 
 def p_mainP(p):
-    """mainP : MAIN OPEN_PAREN CLOSE_PAREN OPEN_BRACKET enviromentP agentP calls CLOSE_BRACKET"""
+    """mainP : MAIN OPEN_PAREN CLOSE_PAREN OPEN_BRACKET environmentP agentP calls CLOSE_BRACKET"""
     ml.set_algorithm("PG")
     ml.ini()
 
 
 def p_mainBB(p):
-    """mainBB : MAIN OPEN_PAREN CLOSE_PAREN OPEN_BRACKET enviromentBB agentBB calls CLOSE_BRACKET"""
+    """mainBB : MAIN OPEN_PAREN CLOSE_PAREN OPEN_BRACKET environmentBB agentBB calls CLOSE_BRACKET"""
     ml.set_algorithm("QL")
     ml.ini()
 
@@ -57,7 +57,7 @@ def p_propertiesP(p):
     ml.model_parametersPG(p[3], p[6])
 
 def p_network(p):
-    """network : NETWORK DOS_PUNITOS OPEN_BRACKET invocations CLOSE_BRACKET"""
+    """network : NETWORK DOS_PUNTITOS OPEN_BRACKET invocations CLOSE_BRACKET"""
 
 def p_invocations(p):
     """invocations : ADD OPEN_PAREN CONV_LAYER CLOSE_PAREN ADD OPEN_PAREN PREDICTIVE_LAYER CLOSE_PAREN"""
@@ -65,7 +65,7 @@ def p_invocations(p):
     ml.PredLayers()
 
 def p_trainingBB(p):
-    """trainingBB : TRAINING DOS_PUNTITOS OPEN_BRACKET train_actionsBB CLOSE_BRACKET"""
+    """trainingBB : TRAINING DOS_PUNTITOS OPEN_BRACKET trainactionsBB CLOSE_BRACKET"""
     ml.training()
 
 
@@ -76,11 +76,11 @@ def p_trainactionsBB(p):
 
 
 def p_trainingP(p):
-    """trainingP : TRAINING DOS_PUNTITOS OPEN_BRACKET train_actionsP CLOSE_BRACKET"""
+    """trainingP : TRAINING DOS_PUNTITOS OPEN_BRACKET trainactionsP CLOSE_BRACKET"""
     ml.training()
 
 def p_trainactionsP(p):
-    """trainactionsP : FIND_POBABILITIES OPEN_PAREN CLOSE_PAREN PREDICT_MOVES OPEN_PAREN CLOSE_PAREN FIT OPEN_PAREN CLOSE_PAREN"""
+    """trainactionsP : FIND_PROBABILITIES OPEN_PAREN CLOSE_PAREN PREDICT_MOVES OPEN_PAREN CLOSE_PAREN FIT OPEN_PAREN CLOSE_PAREN"""
     ml.find_probPG()
     ml.predict_movesPG()
     ml.fitPG()
