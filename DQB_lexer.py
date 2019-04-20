@@ -72,7 +72,7 @@ t_EQUALS = r'='
 
 t_DOT = r'\.'
 
-t_ignore = '\t\n'
+t_ignore = ' \t\n'
 
 def t_error(t):
     print('lol')
