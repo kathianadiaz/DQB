@@ -9,7 +9,7 @@ def p_main(p):
     """main : mainBB"""
 
 def p_mainP(p):
-    """mainP : MAIN OPEN_PAREN CLOSE_PAREN OPEN_BRACKET environmentP agentP calls"""
+    """mainP : MAIN OPEN_PAREN CLOSE_PAREN OPEN_BRACKET environmentP agentP calls CLOSE_BRACKET"""
     ml.set_algorithm("PG")
     ml.ini()
 
@@ -80,7 +80,8 @@ def p_trainactionsP(p):
     ml.fitPG()
 
 def p_calls(p):
-    """calls : EXECUTE"""
+    """calls : EXECUTE OPEN_PAREN CLOSE_PAREN"""
+
     ml.set_algorithm("QL")
     ml.ini()
     ml.model_parametersQL(".10", "1.0", ".1", "1000000", "16", ".9", "30", "3")

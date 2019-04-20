@@ -199,8 +199,8 @@ def t_PREPARE(t):
     return t
 
 def t_EXECUTE(t):
-    r"""Execute()"""
-    t.value = 'Execute()'
+    r"""Execute"""
+    t.value = 'Execute'
     return t
 
 def t_CONV_LAYER(t):
