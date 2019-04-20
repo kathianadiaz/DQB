@@ -1,7 +1,6 @@
 main(){
 	ENVIRONMENT:BrickBreaker
 	AGENT:BBA{
-
 MODEL_PARAMETERS:{
 		Learning_Rate=0.10
 		Epsilon_Start=1.0
@@ -19,8 +18,7 @@ NETWORK:{add(ConvolutionalLayers)add(PredictiveLayers)}
 
 
 TRAINING:{predict_Moves()calculateQ_Values()}
-
+}
 Execute()
-
 	}
 

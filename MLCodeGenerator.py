@@ -358,6 +358,7 @@ def calculateQvalues():
     code.append(py)
 
 def generate():
+
      final_code = code[0]
      for block in code:
          if final_code != block:

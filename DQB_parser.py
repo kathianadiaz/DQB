@@ -6,9 +6,7 @@ tokens = lex.tokens
 
 
 def p_main(p):
-    """main : mainP
-            | mainBB"""
-
+    """main : mainBB"""
 
 def p_mainP(p):
     """mainP : MAIN OPEN_PAREN CLOSE_PAREN OPEN_BRACKET environmentP agentP calls CLOSE_BRACKET"""
@@ -44,7 +42,7 @@ def p_modelparamBB(p):
     """modelparamBB : MODEL_PARAMETERS DOS_PUNTITOS OPEN_BRACKET propertiesBB CLOSE_BRACKET"""
 
 def p_propertiesBB(p):
-    """propertiesBB : LEARNING_RATE EQUALS FLOAT EPSILON_START EQUALS FLOAT EPSILON_END EQUALS FLOAT EXPLORATION_STEPS EQUALS INT BATCH_SIZE EQUALS INT DISCOUNT_FACTOR EQUALS FLOAT NO_STEPS EQUALS INT ACTION_SIZE EQUALS INT """
+    """propertiesBB : LEARNING_RATE EQUALS FLOAT EPSILON_START EQUALS FLOAT EPSILON_END EQUALS FLOAT EXPLORATION_STEPS EQUALS INT BATCH_SIZE EQUALS INT DISCOUNT_FACTOR EQUALS FLOAT NO_STEPS EQUALS INT ACTION_SIZE EQUALS INT"""
 
     ml.model_parametersQL(p[3], p[6], p[9], p[12], p[15], p[18], p[21], p[24])
 
@@ -86,7 +84,7 @@ def p_trainactionsP(p):
     ml.fitPG()
 
 def p_calls(p):
-    """calls : EXECUTE OPEN_PAREN CLOSE_PAREN"""
+    """calls : EXECUTE"""
     ml.generate()
 
 def p_error(p):
@@ -103,6 +101,6 @@ def translate(file):
 
     fileScript = DQB.read()
     parser = yac.yacc()
-    parser.parse(fileScript)
+    pat = parser.parse(fileScript)
 
 
