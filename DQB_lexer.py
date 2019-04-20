@@ -43,7 +43,8 @@ tokens = [
     'PREPARE',
     'EXECUTE',
     'CONV_LAYER',
-    'PREDICTIVE_LAYER'
+    'PREDICTIVE_LAYER',
+    'NAME'
 
 ]
 
@@ -148,47 +149,47 @@ def t_FIT(t):
     return t
 
 def t_LEARNING_RATE(t):
-    r"""LEARNING_RATE"""
+    r"""Learning_Rate"""
     t.value = 'Learning_Rate'
     return t
 
 def t_EPSILON_START(t):
-    r"""EPSILON_START"""
+    r"""Epsilon_Start"""
     t.value = 'Epsilon_Start'
     return t
 
 def t_EPSILON_END(t):
-    r"""EPSILON_END"""
+    r"""Epsilon_End"""
     t.value = 'Epsilon_End'
     return t
 
-def t_EXPLORATION(t):
-    r"""EXPLORATION"""
+def t_EXPLORATION_STEPS(t):
+    r"""Exploration_Steps"""
     t.value = 'Exploration_Steps'
     return t
 
 def t_BATCH_SIZE(t):
-    r"""BATCH_SIZE"""
+    r"""Batch_Size"""
     t.value = 'Batch_Size'
     return t
 
 def t_DISCOUNT_FACTOR(t):
-    r"""DISCOUNT_FACTOR"""
+    r"""Discount_Factor"""
     t.value = 'Discount_Factor'
     return t
 
 def t_NO_STEPS(t):
-    r"""NO_STEPS"""
+    r"""No_Steps"""
     t.value = 'No_Steps'
     return t
 
 def t_ADD(t):
-    r"""ADD"""
-    t.value = 'add'
+    r"""add"""
+    t.value = 'ADD'
     return t
 
 def t_ACTION_SIZE(t):
-    r"""ACTION_SIZE"""
+    r"""Action_Size"""
     t.value = 'Action_Size'
     return t
 
@@ -203,13 +204,18 @@ def t_EXECUTE(t):
     return t
 
 def t_CONV_LAYER(t):
-    r"""CONV_LAYER"""
+    r"""ConvolutionalLayers"""
     t.value = 'ConvolutionalLayers'
     return t
 
 def t_PREDICTIVE_LAYER(t):
-    r"""PREDICTIVE_LAYER"""
+    r"""PredictiveLayers"""
     t.value = 'PredictiveLayers'
+    return t
+
+def t_NAME(t):
+    r'[a-zA-Z_][a-zA-Z_0-9]*'
+    t.type = 'NAME'
     return t
 
 

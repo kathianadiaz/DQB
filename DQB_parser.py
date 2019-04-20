@@ -31,14 +31,14 @@ def p_environmentBB(p):
 
 
 def p_agentBB(p):
-    """agentBB : id OPEN_BRACKET modelparamBB network trainingBB CLOSE_BRACKET"""
+    """agentBB : AGENT DOS_PUNTITOS NAME OPEN_BRACKET modelparamBB network trainingBB CLOSE_BRACKET"""
 
 
 def p_agentP(p):
-    """agentP : id OPEN_BRACKET modelparamP network trainingP CLOSE_BRACKET"""
+    """agentP : NAME OPEN_BRACKET modelparamP network trainingP CLOSE_BRACKET"""
 
-def p_id(p):
-    """id : CHARACTER"""
+#def p_id(p):
+#    """id : CHARACTER"""
 
 def p_modelparamBB(p):
     """modelparamBB : MODEL_PARAMETERS DOS_PUNTITOS OPEN_BRACKET propertiesBB CLOSE_BRACKET"""
