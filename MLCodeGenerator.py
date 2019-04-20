@@ -87,12 +87,15 @@ def model_parametersQL(Learning_Rate,Epsilon_Start,Epsilon_End,Exploration_Steps
 
 
 def ConvLayers():
+    py=" "
     if algorithm == "PG":
         py = "  def _build_model(self):\n" + \
              "      model = Sequential()\n" + \
              "      model.add(Reshape((1, 80, 80), input_shape=(self.state_size,))) \n" + \
              "      model.add(Convolution2D(32, 6, 6, subsample=(3, 3), border_mode='same', activation='relu', init='he_uniform')) \n" + \
              "      model.add(Flatten())\n"
+        code.append(py)
+
     if algorithm == "QL":
         py = "  def build_model(self):\n" + \
              "      model = Sequential()\n" + \
@@ -100,10 +103,12 @@ def ConvLayers():
              "      model.add(Conv2D(64, (4, 4), strides=(2, 2), activation='relu'))\n" + \
              "      model.add(Conv2D(64, (3, 3), strides=(1, 1), activation='relu'))\n" + \
              "      model.add(Flatten())\n"
+        code.append(py)
 
-    code.append(py)
+
 
 def PredLayers():
+
     if algorithm == "PG":
         py = "      model.add(Dense(64, activation='relu', init='he_uniform'))\n" + \
              "      model.add(Dense(32, activation='relu', init='he_uniform'))\n" + \
@@ -111,16 +116,18 @@ def PredLayers():
              "      opt = Adam(lr=self.learning_rate)\n" + \
              "      model.compile(loss='categorical_crossentropy', optimizer=opt)\n" + \
              "      return model\n\n"
+        code.append(py)
 
     if algorithm == "QL":
         py = "      model.add(Dense(512, activation='relu'))\n" + \
              "      model.add(Dense(self.action_size))\n" + \
              "      model.summary()\n" + \
              "      return model\n\n"
-    code.append(py)
+        code.append(py)
 
 #hidden math / ML setup
 def training():
+    py=" "
     if algorithm == "PG":
         py = "  def remember(self, state, action, prob, reward):\n" + \
              "      y = np.zeros([self.action_size])\n" + \
@@ -165,6 +172,7 @@ def training():
              "   I[I == 109] = 0\n" + \
              "   I[I != 0] = 1\n\n" + \
              "   return I.astype(np.float).ravel()\n"
+        code.append(py)
 
 
     if algorithm == 'QL':
@@ -236,9 +244,11 @@ def training():
              "def pre_processing(observe):\n" + \
              "  processed_observe = np.uint8(resize(rgb2gray(observe), (84, 84), mode='constant') * 255)\n" + \
              "  return processed_observe\n\n"
-    code.append(py)
+        code.append(py)
+
 
 def main():
+    py=" "
     if algorithm == 'PG':
         py = "if __name__ == '__main__':\n" + \
              "  env = gym.make('Pong-v0')\n" + \
@@ -255,6 +265,7 @@ def main():
              "      cur_x = preprocess(state)\n" + \
              "      x = cur_x - prev_x if prev_x is not None else np.zeros(state_size)\n" + \
              "      prev_x = cur_x\n"
+        code.append(py)
 
     if algorithm == 'QL':
         py = 'if __name__ == "__main__":\n' + \
@@ -275,8 +286,9 @@ def main():
              '      env.render()\n' + \
              '      global_step += 1\n' + \
              '      step += 1\n'
+        code.append(py)
 
-    code.append(py)
+
 
 
 def find_probPG():

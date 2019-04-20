@@ -199,8 +199,8 @@ def t_PREPARE(t):
     return t
 
 def t_EXECUTE(t):
-    r"""EXECUTE"""
-    t.value = 'EXECUTE'
+    r"""Execute()"""
+    t.value = 'Execute()'
     return t
 
 def t_CONV_LAYER(t):
@@ -237,7 +237,6 @@ lexer.input(fileText)
 while True:
   tok = lexer.token()
   if not tok:
-    print(tok)
     break
 
 
