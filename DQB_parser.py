@@ -9,15 +9,14 @@ def p_main(p):
     """main : mainBB"""
 
 def p_mainP(p):
-    """mainP : MAIN OPEN_PAREN CLOSE_PAREN OPEN_BRACKET environmentP agentP calls CLOSE_BRACKET"""
+    """mainP : MAIN OPEN_PAREN CLOSE_PAREN OPEN_BRACKET environmentP agentP calls"""
     ml.set_algorithm("PG")
     ml.ini()
 
 
 def p_mainBB(p):
     """mainBB : MAIN OPEN_PAREN CLOSE_PAREN OPEN_BRACKET environmentBB agentBB calls CLOSE_BRACKET"""
-    ml.set_algorithm("QL")
-    ml.ini()
+
 
 
 def p_environmentP(p):
@@ -44,7 +43,6 @@ def p_modelparamBB(p):
 def p_propertiesBB(p):
     """propertiesBB : LEARNING_RATE EQUALS FLOAT EPSILON_START EQUALS FLOAT EPSILON_END EQUALS FLOAT EXPLORATION_STEPS EQUALS INT BATCH_SIZE EQUALS INT DISCOUNT_FACTOR EQUALS FLOAT NO_STEPS EQUALS INT ACTION_SIZE EQUALS INT"""
 
-    ml.model_parametersQL(p[3], p[6], p[9], p[12], p[15], p[18], p[21], p[24])
 
 def p_modelparamP(p):
     """modelparamP : MODEL_PARAMETERS DOS_PUNTITOS OPEN_BRACKET propertiesP CLOSE_BRACKET"""
@@ -59,23 +57,21 @@ def p_network(p):
 
 def p_invocations(p):
     """invocations : ADD OPEN_PAREN CONV_LAYER CLOSE_PAREN ADD OPEN_PAREN PREDICTIVE_LAYER CLOSE_PAREN"""
-    ml.ConvLayers()
-    ml.PredLayers()
+
 
 def p_trainingBB(p):
     """trainingBB : TRAINING DOS_PUNTITOS OPEN_BRACKET trainactionsBB CLOSE_BRACKET"""
-    ml.training()
+
 
 
 def p_trainactionsBB(p):
     """trainactionsBB : PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN"""
-    ml.predictmovesQL()
-    ml.calculateQvalues()
+
 
 
 def p_trainingP(p):
     """trainingP : TRAINING DOS_PUNTITOS OPEN_BRACKET trainactionsP CLOSE_BRACKET"""
-    ml.training()
+
 
 def p_trainactionsP(p):
     """trainactionsP : FIND_PROBABILITIES OPEN_PAREN CLOSE_PAREN PREDICT_MOVES OPEN_PAREN CLOSE_PAREN FIT OPEN_PAREN CLOSE_PAREN"""
@@ -85,6 +81,15 @@ def p_trainactionsP(p):
 
 def p_calls(p):
     """calls : EXECUTE"""
+    ml.set_algorithm("QL")
+    ml.ini()
+    ml.model_parametersQL(".10", "1.0", ".1", "1000000", "16", ".9", "30", "3")
+    ml.ConvLayers()
+    ml.PredLayers()
+    ml.training()
+    ml.main()
+    ml.predictmovesQL()
+    ml.calculateQvalues()
     ml.generate()
 
 def p_error(p):

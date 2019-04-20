@@ -19,6 +19,5 @@ NETWORK:{add(ConvolutionalLayers)add(PredictiveLayers)}
 
 TRAINING:{predict_Moves()calculateQ_Values()}
 }
-Execute()
-	}
+Execute()}
 
