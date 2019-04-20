@@ -10,8 +10,6 @@ def p_main(p):
 
 def p_mainP(p):
     """mainP : MAIN OPEN_PAREN CLOSE_PAREN OPEN_BRACKET environmentP agentP calls CLOSE_BRACKET"""
-    ml.set_algorithm("PG")
-    ml.ini()
 
 
 def p_mainBB(p):
@@ -21,11 +19,13 @@ def p_mainBB(p):
 
 def p_environmentP(p):
     """environmentP : ENVIRONMENT DOS_PUNTITOS PONG"""
-
+    ml.set_algorithm("PG")
+    ml.ini()
 
 def p_environmentBB(p):
     """environmentBB : ENVIRONMENT DOS_PUNTITOS BRICK_BREAKER"""
-
+    ml.set_algorithm("QL")
+    ml.ini()
 
 def p_agentBB(p):
     """agentBB : AGENT DOS_PUNTITOS NAME OPEN_BRACKET modelparamBB network trainingBB CLOSE_BRACKET"""

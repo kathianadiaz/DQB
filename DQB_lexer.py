@@ -224,7 +224,7 @@ def t_NAME(t):
 lexer = lex.lex()
 
 try:
-    DQB_test = open("script.txt", 'r')
+    DQB_test = open("script1.txt", 'r')
 except IOError:
    print("Error opening file")
    exit()
