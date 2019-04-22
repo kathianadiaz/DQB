@@ -11,6 +11,7 @@ file = 'script2.txt'
 
 
 App.translate(file)
+App.ml.runAlgorthm()
 time.sleep(5)
 print("file succesfully writen and uploaded!\n")
 #except:

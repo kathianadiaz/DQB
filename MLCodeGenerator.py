@@ -1,3 +1,5 @@
+import OURbreakout_dqn
+import OURpong
 algorithm = " "
 code = []
 
@@ -438,6 +440,13 @@ def calculateQvalues(bool):
                  '  if e % 1000 == 0:\n' + \
                  '      agent.model.save_weights("./save_model/breakout_dqn.h5")\n'
             code.append(py)
+
+def runAlgorthm():
+    if algorithm == 'PG':
+        OURpong.main()
+    if algorithm == 'QL':
+        OURbreakout_dqn.main()
+
 
 def generate():
 

@@ -80,19 +80,25 @@ def p_trainactionsBB(p):
         ml.main(True)
         ml.predictmovesQL()
         ml.calculateQvalues(True)
+        ml.generate()
     if len(p) > 7:
         if p[7] == 'DISPLAY_GAME':
             ml.main(True)
             ml.predictmovesQL()
             ml.calculateQvalues(False)
+            ml.generate()
         elif p[7] == 'MODEL_CURRENT_STATUS':
             ml.main(False)
             ml.predictmovesQL()
             ml.calculateQvalues(True)
+            ml.generate()
         else:
             ml.main(False)
             ml.predictmovesQL()
-            ml.main(False)
+            ml.calculateQvalues(True)
+            ml.generate()
+
+
 
 
 
@@ -112,10 +118,11 @@ def p_trainactionsP(p):
     ml.find_probPG()
     ml.predict_movesPG()
     ml.fitPG()
+    ml.generate()
 
 def p_calls(p):
     """calls : EXECUTE OPEN_PAREN CLOSE_PAREN"""
-    ml.generate()
+
 
 
 #def p_error(p):
