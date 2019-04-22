@@ -45,7 +45,6 @@ tokens = [
     'CONV_LAYER',
     'PREDICTIVE_LAYER',
     'SHOW_MODEL_SUMMARY',
-    'MODEL_CURRENT_STATUS',
     'NAME'
 
 ]
@@ -133,11 +132,6 @@ def t_DISPLAY_GAME(t):
 def t_CALCULATE_Q_VALUES(t):
     r"""calculateQ_Values"""
     t.value = 'calculateQ_Values'
-    return t
-
-def t_MODEL_CURRENT_STATUS(t):
-    r"""MODEL_CURRENT_STATUS"""
-    t.value = 'MODEL_CURRENT_STATUS'
     return t
 
 def t_FIND_PROBABILITIES(t):
