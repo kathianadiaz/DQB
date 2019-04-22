@@ -2,10 +2,10 @@ main(){
 	ENVIRONMENT:Pong
 	AGENT:AtariPro{
 
-MODEL_PARAMETERS:{
+    MODEL_PARAMETERS:{
 
-        LEARNING_RATE: .001
-        DISCOUNT_FACTOR: .99
+        Learning_Rate = 0.001
+        Discount_Factor = 0.99
 
         }
 
@@ -17,9 +17,9 @@ MODEL_PARAMETERS:{
 	}
 
 		TRAINING:{
-	        Find_Probabilities()
-			predict_Moves()
-			Fit()
+	        find_probabilities()
+			predict_moves()
+			fit()
     }
 }
     Execute()

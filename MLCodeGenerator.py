@@ -293,7 +293,7 @@ def main():
 
 def find_probPG():
 
-    py = '    action, prob = agent.act(x)\n'
+    py = '      action, prob = agent.act(x)\n'
     code.append(py)
 
 def predict_movesPG():

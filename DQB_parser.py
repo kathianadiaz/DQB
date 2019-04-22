@@ -93,9 +93,9 @@ def p_calls(p):
     ml.generate()
 
 
-def p_error(p):
-    print("error")
-    exit()
+#def p_error(p):
+ #   print("error")
+  #  exit()
 
 def translate(file):
 

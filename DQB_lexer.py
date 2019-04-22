@@ -119,8 +119,8 @@ def t_TRAINING(t):
     return t
 
 def t_PREDICT_MOVES(t):
-    r"""predict_Moves"""
-    t.value = 'predict_Moves'
+    r"""predict_moves"""
+    t.value = 'predict_moves'
     return t
 
 def t_DISPLAY(t):
@@ -139,13 +139,13 @@ def t_MODEL_CURRENT_STATUS(t):
     return t
 
 def t_FIND_PROBABILITIES(t):
-    r"""FIND_PROBABILITIES"""
-    t.value = 'FIND_PROBABILITIES'
+    r"""find_probabilities"""
+    t.value = 'find_probabilities'
     return t
 
 def t_FIT(t):
-    r"""FIT"""
-    t.value = 'FIT'
+    r"""fit"""
+    t.value = 'fit'
     return t
 
 def t_LEARNING_RATE(t):
