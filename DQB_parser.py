@@ -63,13 +63,14 @@ def p_invocations(p):
 
 def p_trainingBB(p):
     """trainingBB : TRAINING DOS_PUNTITOS OPEN_BRACKET trainactionsBB CLOSE_BRACKET"""
-    ml.training()
-    ml.main()
+
 
 
 
 def p_trainactionsBB(p):
     """trainactionsBB : PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN"""
+    ml.training()
+    ml.main()
     ml.predictmovesQL()
     ml.calculateQvalues()
 
@@ -78,12 +79,13 @@ def p_trainactionsBB(p):
 
 def p_trainingP(p):
     """trainingP : TRAINING DOS_PUNTITOS OPEN_BRACKET trainactionsP CLOSE_BRACKET"""
-    ml.training()
-    ml.main()
+
 
 
 def p_trainactionsP(p):
     """trainactionsP : FIND_PROBABILITIES OPEN_PAREN CLOSE_PAREN PREDICT_MOVES OPEN_PAREN CLOSE_PAREN FIT OPEN_PAREN CLOSE_PAREN"""
+    ml.training()
+    ml.main()
     ml.find_probPG()
     ml.predict_movesPG()
     ml.fitPG()

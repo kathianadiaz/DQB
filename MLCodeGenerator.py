@@ -276,16 +276,16 @@ def main():
              '      done = False\n' + \
              '      dead = False\n' + \
              '      step, score, start_life = 0, 0, 5\n\n' + \
-             '  observe = env.reset()\n' + \
-             '  for _ in range(random.randint(1, agent.no_op_steps)):\n' + \
-             '      observe, _, _, _ = env.step(1)\n\n' + \
-             '  state = pre_processing(observe)\n' + \
-             '  history = np.stack((state, state, state, state), axis=2)\n' + \
-             '  history = np.reshape([history], (1, 84, 84, 4))\n' + \
-             '  while not done:\n' + \
-             '      env.render()\n' + \
-             '      global_step += 1\n' + \
-             '      step += 1\n'
+             '      observe = env.reset()\n' + \
+             '      for _ in range(random.randint(1, agent.no_op_steps)):\n' + \
+             '          observe, _, _, _ = env.step(1)\n\n' + \
+             '      state = pre_processing(observe)\n' + \
+             '      history = np.stack((state, state, state, state), axis=2)\n' + \
+             '      history = np.reshape([history], (1, 84, 84, 4))\n' + \
+             '      while not done:\n' + \
+             '          env.render()\n' + \
+             '          global_step += 1\n' + \
+             '          step += 1\n'
         code.append(py)
 
 
@@ -316,43 +316,43 @@ def fitPG():
 
 def predictmovesQL():
 
-    py =     '      action = agent.get_action(history)\n' + \
-             '      if action == 0:\n' + \
-             '          real_action = 1\n' + \
-             '      elif action == 1:\n' + \
-             '          real_action = 2\n' + \
-             '      else:\n' + \
-             '          real_action = 3\n' + \
-             '      observe, reward, done, info = env.step(real_action)\n' + \
-             '      next_state = pre_processing(observe)\n' + \
-             '      next_state = np.reshape([next_state], (1, 84, 84, 1))\n' + \
-             '      next_history = np.append(next_state, history[:, :, :, :3], axis=3)\n' + \
-             '      agent.avg_q_max += np.amax(agent.model.predict(np.float32(history / 255.))[0])\n' + \
-             '      if start_life > info["ale.lives"]:\n' + \
-             '          dead = True\n' + \
-             '          start_life = info["ale.lives"]\n'
+    py =     '          action = agent.get_action(history)\n' + \
+             '          if action == 0:\n' + \
+             '              real_action = 1\n' + \
+             '          elif action == 1:\n' + \
+             '              real_action = 2\n' + \
+             '          else:\n' + \
+             '              real_action = 3\n' + \
+             '          observe, reward, done, info = env.step(real_action)\n' + \
+             '          next_state = pre_processing(observe)\n' + \
+             '          next_state = np.reshape([next_state], (1, 84, 84, 1))\n' + \
+             '          next_history = np.append(next_state, history[:, :, :, :3], axis=3)\n' + \
+             '          agent.avg_q_max += np.amax(agent.model.predict(np.float32(history / 255.))[0])\n' + \
+             '          if start_life > info["ale.lives"]:\n' + \
+             '              dead = True\n' + \
+             '              start_life = info["ale.lives"]\n'
     code.append(py)
 
 def calculateQvalues():
-    py =     '      reward = np.clip(reward, -1., 1.)\n' + \
-             '      agent.replay_memory(history, action, reward, next_history, dead)\n' + \
-             '      agent.train_replay()\n' + \
-             '      if global_step % agent.update_target_rate == 0:\n' + \
-             '          agent.update_target_model()\n' + \
-             '      score += reward\n' + \
-             '      if dead:\n' + \
-             '          dead = False\n' + \
-             '      else:\n' + \
-             '          history = next_history \n' + \
-             '      if done:\n' + \
-             '          if global_step > agent.train_start:\n' + \
-             '              stats = [score, agent.avg_q_max / float(step), step,agent.avg_loss / float(step)]\n' + \
-             '              for i in range(len(stats)):\n' + \
-             '                  agent.sess.run(agent.update_ops[i], feed_dict={ agent.summary_placeholders[i]: float(stats[i])})\n' + \
-             '              summary_str = agent.sess.run(agent.summary_op)\n' + \
-             '              agent.summary_writer.add_summary(summary_str, e + 1)\n' + \
-             '          print("episode:", e, "  score:", score, "  memory length:", len(agent.memory), "  epsilon:", agent.epsilon,"  global_step:", global_step, "  average_q:", agent.avg_q_max / float(step), "  average loss:", agent.avg_loss / float(step))\n' + \
-             '          agent.avg_q_max, agent.avg_loss = 0, 0\n' + \
+    py =     '          reward = np.clip(reward, -1., 1.)\n' + \
+             '          agent.replay_memory(history, action, reward, next_history, dead)\n' + \
+             '          agent.train_replay()\n' + \
+             '          if global_step % agent.update_target_rate == 0:\n' + \
+             '              agent.update_target_model()\n' + \
+             '          score += reward\n' + \
+             '          if dead:\n' + \
+             '              dead = False\n' + \
+             '          else:\n' + \
+             '              history = next_history \n' + \
+             '          if done:\n' + \
+             '              if global_step > agent.train_start:\n' + \
+             '                  stats = [score, agent.avg_q_max / float(step), step,agent.avg_loss / float(step)]\n' + \
+             '                  for i in range(len(stats)):\n' + \
+             '                      agent.sess.run(agent.update_ops[i], feed_dict={ agent.summary_placeholders[i]: float(stats[i])})\n' + \
+             '                  summary_str = agent.sess.run(agent.summary_op)\n' + \
+             '                  agent.summary_writer.add_summary(summary_str, e + 1)\n' + \
+             '              print("episode:", e, "  score:", score, "  memory length:", len(agent.memory), "  epsilon:", agent.epsilon,"  global_step:", global_step, "  average_q:", agent.avg_q_max / float(step), "  average loss:", agent.avg_loss / float(step))\n' + \
+             '              agent.avg_q_max, agent.avg_loss = 0, 0\n' + \
              '  if e % 1000 == 0:\n' + \
              '      agent.model.save_weights("./save_model/breakout_dqn.h5")\n'
     code.append(py)

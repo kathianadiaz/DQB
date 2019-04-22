@@ -11,8 +11,8 @@ MODEL_PARAMETERS:{
 		Exploration_Steps=1000000
 		Batch_Size=16
 		Discount_Factor=0.90
-		No_Steps=30
-		Action_Size=3
+		No_Steps= 30
+		Action_Size= 3
 	}
 
 NETWORK:{
@@ -26,7 +26,7 @@ NETWORK:{
 
 TRAINING:{
 
-    predict_Moves()
+    predict_moves()
     calculateQ_Values()
 
     }
