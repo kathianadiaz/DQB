@@ -81,7 +81,7 @@ def preprocess(I):
    I[I != 0] = 1
 
    return I.astype(np.float).ravel()
-if __name__ == '__main__':
+def run():
   env = gym.make('Pong-v0')
   state = env.reset()
   prev_x = None

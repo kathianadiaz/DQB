@@ -270,7 +270,7 @@ def main(bool):
     py=" "
 
     if algorithm == 'PG' and bool == True:
-        py = "if __name__ == '__main__':\n" + \
+        py = "def run():\n" + \
              "  env = gym.make('Pong-v0')\n" + \
              "  state = env.reset()\n" + \
              "  prev_x = None\n" + \
@@ -288,8 +288,8 @@ def main(bool):
         code.append(py)
 
     if algorithm == 'QL' and bool == True:
-        py = 'if __name__ == "__main__":\n' + \
-             '  env = gym.make("BreakoutDeterministic-v4")\n' + \
+        py = 'def run():\n' + \
+             '  env = gym.make("BreakoutDeterministic-v0")\n' + \
              '  agent = DQNAgent(action_size=3) # 3\n' + \
              '  scores, episodes, global_step = [], [], 0\n' + \
              '  for e in range(EPISODES):\n' + \
@@ -309,7 +309,7 @@ def main(bool):
         code.append(py)
 
     if algorithm == 'PG' and bool == False:
-        py = "if __name__ == '__main__':\n" + \
+        py = "def run():\n" + \
              "  env = gym.make('Pong-v0')\n" + \
              "  state = env.reset()\n" + \
              "  prev_x = None\n" + \
@@ -327,7 +327,7 @@ def main(bool):
         code.append(py)
 
     if algorithm == 'QL' and bool == False:
-        py = 'if __name__ == "__main__":\n' + \
+        py = 'def run():\n' + \
              '  env = gym.make("BreakoutDeterministic-v4")\n' + \
              '  agent = DQNAgent(action_size=3) # 3\n' + \
              '  scores, episodes, global_step = [], [], 0\n' + \
@@ -443,9 +443,9 @@ def calculateQvalues(bool):
 
 def runAlgorthm():
     if algorithm == 'PG':
-        OURpong.main()
+        OURpong.run()
     if algorithm == 'QL':
-        OURbreakout_dqn.main()
+        OURbreakout_dqn.run()
 
 
 def generate():

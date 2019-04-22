@@ -57,7 +57,7 @@ def p_network(p):
 
 def p_invocations(p):
     """invocations : ADD OPEN_PAREN CONV_LAYER CLOSE_PAREN ADD OPEN_PAREN PREDICTIVE_LAYER CLOSE_PAREN
-                   | ADD OPEN_PAREN CONV_LAYER CLOSE_PAREN ADD OPEN_PAREN PREDICTIVE_LAYER CLOSE_PAREN MODEL_CURRENT_STATUS OPEN_PAREN CLOSE_PAREN"""
+                   | ADD OPEN_PAREN CONV_LAYER CLOSE_PAREN ADD OPEN_PAREN PREDICTIVE_LAYER CLOSE_PAREN SHOW_MODEL_SUMMARY OPEN_PAREN CLOSE_PAREN"""
     ml.ConvLayers()
     if len(p) == 12:
         ml.PredLayersShow()
@@ -92,7 +92,7 @@ def p_trainactionsBB(p):
             ml.predictmovesQL()
             ml.calculateQvalues(True)
             ml.generate()
-        else:
+    else:
             ml.main(False)
             ml.predictmovesQL()
             ml.calculateQvalues(True)
