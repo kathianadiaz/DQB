@@ -56,10 +56,13 @@ def p_network(p):
     """network : NETWORK DOS_PUNTITOS OPEN_BRACKET invocations CLOSE_BRACKET"""
 
 def p_invocations(p):
-    """invocations : ADD OPEN_PAREN CONV_LAYER CLOSE_PAREN ADD OPEN_PAREN PREDICTIVE_LAYER CLOSE_PAREN"""
+    """invocations : ADD OPEN_PAREN CONV_LAYER CLOSE_PAREN ADD OPEN_PAREN PREDICTIVE_LAYER CLOSE_PAREN
+                   | ADD OPEN_PAREN CONV_LAYER CLOSE_PAREN ADD OPEN_PAREN PREDICTIVE_LAYER CLOSE_PAREN SHOW_MODEL_PARAMETER OPEN_PAREN CLOSE_PAREN"""
     ml.ConvLayers()
-    ml.PredLayers()
-
+    if len(p) == 12:
+        ml.PredLayersShow()
+    else:
+        ml.PredLayers()
 
 def p_trainingBB(p):
     """trainingBB : TRAINING DOS_PUNTITOS OPEN_BRACKET trainactionsBB CLOSE_BRACKET"""
@@ -68,12 +71,27 @@ def p_trainingBB(p):
 
 
 def p_trainactionsBB(p):
-    """trainactionsBB : PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN"""
+    """trainactionsBB : PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN
+                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN
+                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN MODEL_CURRENT_STATUS OPEN_PAREN CLOSE_PAREN
+                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN MODEL_CURRENT_STATUS OPEN_PAREN CLOSE_PAREN"""
     ml.training()
-    ml.main()
-    ml.predictmovesQL()
-    ml.calculateQvalues()
-
+    if len(p) == 13:
+        ml.main(True)
+        ml.predictmovesQL()
+        ml.calculateQvalues(True)
+    if p[7] == 'DISPLAY_GAME':
+        ml.main(True)
+        ml.predictmovesQL()
+        ml.calculateQvalues(False)
+    elif p[7] == 'MODEL_CURRENT_STATUS':
+        ml.main(False)
+        ml.predictmovesQL()
+        ml.calculateQvalues(True)
+    else:
+        ml.main(False)
+        ml.predictmovesQL()
+        ml.main(False)
 
 
 
@@ -83,9 +101,13 @@ def p_trainingP(p):
 
 
 def p_trainactionsP(p):
-    """trainactionsP : FIND_PROBABILITIES OPEN_PAREN CLOSE_PAREN PREDICT_MOVES OPEN_PAREN CLOSE_PAREN FIT OPEN_PAREN CLOSE_PAREN"""
+    """trainactionsP : FIND_PROBABILITIES OPEN_PAREN CLOSE_PAREN PREDICT_MOVES OPEN_PAREN CLOSE_PAREN FIT OPEN_PAREN CLOSE_PAREN
+                     | FIND_PROBABILITIES OPEN_PAREN CLOSE_PAREN PREDICT_MOVES OPEN_PAREN CLOSE_PAREN FIT OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN"""
     ml.training()
-    ml.main()
+    if len(p) == 13:
+        ml.main(True)
+    else:
+        ml.main(False)
     ml.find_probPG()
     ml.predict_movesPG()
     ml.fitPG()

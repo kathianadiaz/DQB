@@ -26,7 +26,7 @@ tokens = [
     'NETWORK',
     'TRAINING',
     'PREDICT_MOVES',
-    'DISPLAY',
+    'DISPLAY_GAME',
     'CALCULATE_Q_VALUES',
     'MODEL_CURRENT_STATUS',
     'FIND_PROBABILITIES',
@@ -44,6 +44,8 @@ tokens = [
     'EXECUTE',
     'CONV_LAYER',
     'PREDICTIVE_LAYER',
+    'SHOW_MODEL_SUMMARY',
+    'MODEL_CURRENT_STATUS',
     'NAME'
 
 ]
@@ -123,9 +125,9 @@ def t_PREDICT_MOVES(t):
     t.value = 'predict_moves'
     return t
 
-def t_DISPLAY(t):
-    r"""DISPLAY"""
-    t.value = 'DISPLAY'
+def t_DISPLAY_GAME(t):
+    r"""displayGame"""
+    t.value = 'DISPLAY_GAME'
     return t
 
 def t_CALCULATE_Q_VALUES(t):
@@ -211,6 +213,16 @@ def t_CONV_LAYER(t):
 def t_PREDICTIVE_LAYER(t):
     r"""PredictiveLayers"""
     t.value = 'PredictiveLayers'
+    return t
+
+def t_SHOW_MODEL_SUMMARY(t):
+    r"""show_model_summary"""
+    t.value = 'show_model_summary'
+    return t
+
+def t_MODEL_CURRENT_STATUS(t):
+    r"""modelCurrentStatus"""
+    t.value = 'modelCurrentStatus'
     return t
 
 def t_NAME(t):
