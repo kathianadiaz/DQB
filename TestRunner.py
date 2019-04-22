@@ -7,7 +7,7 @@ time.sleep(0.25)
 print("Processing Code...\n")
 time.sleep(0.25)
 
-file = 'script1.txt'
+file = 'script2.txt'
 
 
 App.translate(file)

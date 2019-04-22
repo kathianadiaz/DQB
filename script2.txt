@@ -1,0 +1,26 @@
+main(){
+	ENVIRONMENT:Pong
+	AGENT:AtariPro{
+
+MODEL_PARAMETERS:{
+
+        LEARNING_RATE: .001
+        DISCOUNT_FACTOR: .99
+
+        }
+
+	NETWORK:{
+                add(ConvolutionalLayers)
+				add(PredictiveLayers)
+
+
+	}
+
+		TRAINING:{
+	        Find_Probabilities()
+			predict_Moves()
+			Fit()
+    }
+}
+    Execute()
+}
