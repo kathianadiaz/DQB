@@ -446,9 +446,9 @@ def generate():
          if final_code != block:
              final_code += block
      if algorithm == 'PG':
-         file = open("OURpong.py", 'x')
+         file = open("OURpong.py", 'w')
      elif algorithm == 'QL':
-         file = open("OURbreakout_dqn.py", 'x')
+         file = open("OURbreakout_dqn.py", 'w')
 
      file.write(final_code)
      file.close()
