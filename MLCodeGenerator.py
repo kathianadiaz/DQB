@@ -107,8 +107,26 @@ def ConvLayers():
 
 
 
-def PredLayers():
+def PredLayersShow():
 
+    if algorithm == "PG":
+        py = "      model.add(Dense(64, activation='relu', init='he_uniform'))\n" + \
+             "      model.add(Dense(32, activation='relu', init='he_uniform'))\n" + \
+             "      model.add(Dense(self.action_size, activation='softmax'))\n" + \
+             "      opt = Adam(lr=self.learning_rate)\n" + \
+             "      model.compile(loss='categorical_crossentropy', optimizer=opt)\n" + \
+             "      model.summary()\n" + \
+             "      return model\n\n"
+        code.append(py)
+
+    if algorithm == "QL":
+        py = "      model.add(Dense(512, activation='relu'))\n" + \
+             "      model.add(Dense(self.action_size))\n" + \
+             "      model.summary()\n" + \
+             "      return model\n\n"
+        code.append(py)
+
+def PredLayers():
     if algorithm == "PG":
         py = "      model.add(Dense(64, activation='relu', init='he_uniform'))\n" + \
              "      model.add(Dense(32, activation='relu', init='he_uniform'))\n" + \
@@ -121,7 +139,6 @@ def PredLayers():
     if algorithm == "QL":
         py = "      model.add(Dense(512, activation='relu'))\n" + \
              "      model.add(Dense(self.action_size))\n" + \
-             "      model.summary()\n" + \
              "      return model\n\n"
         code.append(py)
 
@@ -247,9 +264,10 @@ def training():
         code.append(py)
 
 
-def main():
+def main(bool):
     py=" "
-    if algorithm == 'PG':
+
+    if algorithm == 'PG' and bool == True:
         py = "if __name__ == '__main__':\n" + \
              "  env = gym.make('Pong-v0')\n" + \
              "  state = env.reset()\n" + \
@@ -267,7 +285,7 @@ def main():
              "      prev_x = cur_x\n"
         code.append(py)
 
-    if algorithm == 'QL':
+    if algorithm == 'QL' and bool == True:
         py = 'if __name__ == "__main__":\n' + \
              '  env = gym.make("BreakoutDeterministic-v4")\n' + \
              '  agent = DQNAgent(action_size=3) # 3\n' + \
@@ -284,6 +302,45 @@ def main():
              '      history = np.reshape([history], (1, 84, 84, 4))\n' + \
              '      while not done:\n' + \
              '          env.render()\n' + \
+             '          global_step += 1\n' + \
+             '          step += 1\n'
+        code.append(py)
+
+    if algorithm == 'PG' and bool == False:
+        py = "if __name__ == '__main__':\n" + \
+             "  env = gym.make('Pong-v0')\n" + \
+             "  state = env.reset()\n" + \
+             "  prev_x = None\n" + \
+             "  score = 0\n" + \
+             "  episode = 0\n" + \
+             "  state_size = 80 * 80\n" + \
+             "  action_size = env.action_space.n\n" + \
+             "  agent = PGAgent(state_size, action_size)\n" + \
+             "  agent.load('./save_model/pong_reinforce.h5')\n" + \
+             "  while True:\n" + \
+             "      #env.render()\n" + \
+             "      cur_x = preprocess(state)\n" + \
+             "      x = cur_x - prev_x if prev_x is not None else np.zeros(state_size)\n" + \
+             "      prev_x = cur_x\n"
+        code.append(py)
+
+    if algorithm == 'QL' and bool == False:
+        py = 'if __name__ == "__main__":\n' + \
+             '  env = gym.make("BreakoutDeterministic-v4")\n' + \
+             '  agent = DQNAgent(action_size=3) # 3\n' + \
+             '  scores, episodes, global_step = [], [], 0\n' + \
+             '  for e in range(EPISODES):\n' + \
+             '      done = False\n' + \
+             '      dead = False\n' + \
+             '      step, score, start_life = 0, 0, 5\n\n' + \
+             '      observe = env.reset()\n' + \
+             '      for _ in range(random.randint(1, agent.no_op_steps)):\n' + \
+             '          observe, _, _, _ = env.step(1)\n\n' + \
+             '      state = pre_processing(observe)\n' + \
+             '      history = np.stack((state, state, state, state), axis=2)\n' + \
+             '      history = np.reshape([history], (1, 84, 84, 4))\n' + \
+             '      while not done:\n' + \
+             '          #env.render()\n' + \
              '          global_step += 1\n' + \
              '          step += 1\n'
         code.append(py)
@@ -333,8 +390,9 @@ def predictmovesQL():
              '              start_life = info["ale.lives"]\n'
     code.append(py)
 
-def calculateQvalues():
-    py =     '          reward = np.clip(reward, -1., 1.)\n' + \
+def calculateQvalues(bool):
+    if bool == True:
+        py =     '          reward = np.clip(reward, -1., 1.)\n' + \
              '          agent.replay_memory(history, action, reward, next_history, dead)\n' + \
              '          agent.train_replay()\n' + \
              '          if global_step % agent.update_target_rate == 0:\n' + \
@@ -355,7 +413,31 @@ def calculateQvalues():
              '              agent.avg_q_max, agent.avg_loss = 0, 0\n' + \
              '  if e % 1000 == 0:\n' + \
              '      agent.model.save_weights("./save_model/breakout_dqn.h5")\n'
-    code.append(py)
+        code.append(py)
+
+        if bool == False:
+            py = '          reward = np.clip(reward, -1., 1.)\n' + \
+                 '          agent.replay_memory(history, action, reward, next_history, dead)\n' + \
+                 '          agent.train_replay()\n' + \
+                 '          if global_step % agent.update_target_rate == 0:\n' + \
+                 '              agent.update_target_model()\n' + \
+                 '          score += reward\n' + \
+                 '          if dead:\n' + \
+                 '              dead = False\n' + \
+                 '          else:\n' + \
+                 '              history = next_history \n' + \
+                 '          if done:\n' + \
+                 '              if global_step > agent.train_start:\n' + \
+                 '                  stats = [score, agent.avg_q_max / float(step), step,agent.avg_loss / float(step)]\n' + \
+                 '                  for i in range(len(stats)):\n' + \
+                 '                      agent.sess.run(agent.update_ops[i], feed_dict={ agent.summary_placeholders[i]: float(stats[i])})\n' + \
+                 '                  summary_str = agent.sess.run(agent.summary_op)\n' + \
+                 '                  agent.summary_writer.add_summary(summary_str, e + 1)\n' + \
+                 '              #print("episode:", e, "  score:", score, "  memory length:", len(agent.memory), "  epsilon:", agent.epsilon,"  global_step:", global_step, "  average_q:", agent.avg_q_max / float(step), "  average loss:", agent.avg_loss / float(step))\n' + \
+                 '              agent.avg_q_max, agent.avg_loss = 0, 0\n' + \
+                 '  if e % 1000 == 0:\n' + \
+                 '      agent.model.save_weights("./save_model/breakout_dqn.h5")\n'
+            code.append(py)
 
 def generate():
 
