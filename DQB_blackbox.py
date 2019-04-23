@@ -2,7 +2,7 @@ import DQB_parser as App
 import time
 
 
-print("DQB blackbox initiated... \n")
+print("\n\n\nDQB blackbox initiated... \n")
 print("Processing Code...\n")
 time.sleep(0.25)
 

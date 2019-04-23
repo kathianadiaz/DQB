@@ -59,7 +59,7 @@ def p_invocations(p):
     """invocations : ADD OPEN_PAREN CONV_LAYER CLOSE_PAREN ADD OPEN_PAREN PREDICTIVE_LAYER CLOSE_PAREN
                    | ADD OPEN_PAREN CONV_LAYER CLOSE_PAREN ADD OPEN_PAREN PREDICTIVE_LAYER CLOSE_PAREN SHOW_MODEL_SUMMARY OPEN_PAREN CLOSE_PAREN"""
     ml.ConvLayers()
-    print(len(p))
+
     if len(p) > 9:
         ml.PredLayersShow()
     else:
@@ -79,8 +79,7 @@ def p_trainactionsBB(p):
                       | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN"""
 
     ml.training()
-    print(len(p))
-    print(p[7])
+
 
     if len(p) == 13:
         ml.main(True)
@@ -133,11 +132,8 @@ def p_calls(p):
     """calls : EXECUTE OPEN_PAREN CLOSE_PAREN"""
 
 def p_error(p):
-     print("Syntax error at %s"%p.value)
-
-#def p_error(p):
-#   print("error")
-#   exit()
+     print("Syntax error at %s"% p.value)
+     exit()
 
 def translate(file):
 
