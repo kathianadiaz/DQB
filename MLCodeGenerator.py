@@ -1,5 +1,4 @@
-import OURbreakout_dqn
-import OURpong
+
 algorithm = " "
 code = []
 
@@ -442,6 +441,8 @@ def calculateQvalues(bool):
             code.append(py)
 
 def runAlgorthm():
+    import OURbreakout_dqn
+    import OURpong
     if algorithm == 'PG':
         OURpong.run()
     if algorithm == 'QL':

@@ -7,10 +7,12 @@ time.sleep(0.25)
 print("Processing Code...\n")
 time.sleep(0.25)
 
-file = 'script2.txt'
+file = 'script1.txt'
 
 
 App.translate(file)
+
+
 App.ml.runAlgorthm()
 
 #except:
