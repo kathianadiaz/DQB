@@ -10,7 +10,7 @@
 With premade parameters for each agent, one would be able to change its internal properties. 
 One would alter the agent’s parameters to see the effect it had on its ability to perform within an environment.
 
-### Training and testing:
+### Training and Testing:
 
 Simple environments held within the Gym library will provide a way to test and train a model.
 Actual state of the model while training will provide an insight of how the model is learning.
