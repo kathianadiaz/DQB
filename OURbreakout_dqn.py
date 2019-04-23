@@ -149,7 +149,7 @@ def run():
       history = np.stack((state, state, state, state), axis=2)
       history = np.reshape([history], (1, 84, 84, 4))
       while not done:
-          #env.render()
+          env.render()
           global_step += 1
           step += 1
           action = agent.get_action(history)

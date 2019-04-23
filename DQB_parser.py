@@ -132,11 +132,12 @@ def p_trainactionsP(p):
 def p_calls(p):
     """calls : EXECUTE OPEN_PAREN CLOSE_PAREN"""
 
-
+def p_error(p):
+     print("Syntax error at %s"%p.value)
 
 #def p_error(p):
- #   print("error")
-  #  exit()
+#   print("error")
+#   exit()
 
 def translate(file):
 

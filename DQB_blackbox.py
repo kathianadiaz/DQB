@@ -6,7 +6,7 @@ print("DQB blackbox initiated... \n")
 print("Processing Code...\n")
 time.sleep(0.25)
 
-file = 'script2.txt'
+file = 'DQB_script.txt'
 
 
 App.translate(file)

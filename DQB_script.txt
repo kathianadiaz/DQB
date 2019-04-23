@@ -18,7 +18,7 @@ MODEL_PARAMETERS:{
 NETWORK:{
     add(ConvolutionalLayers)
     add(PredictiveLayers)
-    show
+
 
 }
 
@@ -30,6 +30,8 @@ TRAINING:{
     predict_moves()
     calculateQ_Values()
     modelCurrentStatus()
+    displayGame()
+    displayGame()
 
     
     }
