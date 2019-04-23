@@ -45,7 +45,8 @@ tokens = [
     'CONV_LAYER',
     'PREDICTIVE_LAYER',
     'SHOW_MODEL_SUMMARY',
-    'NAME'
+    'NAME',
+    'CONDITIONAL'
 
 ]
 
@@ -224,6 +225,11 @@ def t_NAME(t):
     t.type = 'NAME'
     return t
 
+
+def CONDITIONAL(t):
+    r"""CONDITIONAL"""
+    t.value = 'CONDITIONAL'
+    return t
 
 #Initializes lexer
 
