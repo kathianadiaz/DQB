@@ -18,6 +18,7 @@ MODEL_PARAMETERS:{
 NETWORK:{
     add(ConvolutionalLayers)
     add(PredictiveLayers)
+    show
 
 }
 

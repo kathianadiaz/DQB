@@ -49,8 +49,7 @@ def model_parametersPG(learning_rate, discount_factor):
          "      self.gradients = []\n" + \
          "      self.rewards = []\n" + \
          "      self.probs = []\n" + \
-         "      self.model = self._build_model()\n" + \
-         "      self.model.summary()\n"
+         "      self.model = self._build_model()\n\n"
 
     code.append(py)
 

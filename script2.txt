@@ -12,6 +12,7 @@ main(){
 	NETWORK:{
                 add(ConvolutionalLayers)
 				add(PredictiveLayers)
+				showModelSummary()
 
 
 	}
