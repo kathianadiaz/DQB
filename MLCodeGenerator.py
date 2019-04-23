@@ -1,4 +1,4 @@
-
+from importlib import reload
 algorithm = " "
 code = []
 
@@ -327,7 +327,7 @@ def main(bool):
 
     if algorithm == 'QL' and bool == False:
         py = 'def run():\n' + \
-             '  env = gym.make("BreakoutDeterministic-v4")\n' + \
+             '  env = gym.make("BreakoutDeterministic-v0")\n' + \
              '  agent = DQNAgent(action_size=3) # 3\n' + \
              '  scores, episodes, global_step = [], [], 0\n' + \
              '  for e in range(EPISODES):\n' + \
@@ -441,11 +441,15 @@ def calculateQvalues(bool):
             code.append(py)
 
 def runAlgorthm():
+    #out of place import to handle reload of generated file
     import OURbreakout_dqn
     import OURpong
+
     if algorithm == 'PG':
+
         OURpong.run()
     if algorithm == 'QL':
+
         OURbreakout_dqn.run()
 
 
@@ -456,11 +460,12 @@ def generate():
          if final_code != block:
              final_code += block
      if algorithm == 'PG':
-         file = open("OURpong.py", 'w')
+         file = open("OURpong.py", 'w+')
      elif algorithm == 'QL':
-         file = open("OURbreakout_dqn.py", 'w')
+         file = open("OURbreakout_dqn.py", 'w+')
 
      file.write(final_code)
+
      file.close()
 
 

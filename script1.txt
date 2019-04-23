@@ -18,6 +18,7 @@ MODEL_PARAMETERS:{
 NETWORK:{
     add(ConvolutionalLayers)
     add(PredictiveLayers)
+    show_model_summary()
 
 }
 
@@ -28,7 +29,9 @@ TRAINING:{
 
     predict_moves()
     calculateQ_Values()
+
     
+
     }
 
   }

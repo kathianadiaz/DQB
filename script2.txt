@@ -20,6 +20,11 @@ main(){
 	        find_probabilities()
 			predict_moves()
 			fit()
+			displayGame()
+
+
+
+			
 
 
     }

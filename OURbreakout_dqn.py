@@ -51,6 +51,7 @@ class DQNAgent:
       model.add(Flatten())
       model.add(Dense(512, activation='relu'))
       model.add(Dense(self.action_size))
+      model.summary()
       return model
 
   def optimizer(self):
@@ -133,7 +134,7 @@ def pre_processing(observe):
   return processed_observe
 
 def run():
-  env = gym.make("BreakoutDeterministic-v4")
+  env = gym.make("BreakoutDeterministic-v0")
   agent = DQNAgent(action_size=3) # 3
   scores, episodes, global_step = [], [], 0
   for e in range(EPISODES):
@@ -167,24 +168,3 @@ def run():
           if start_life > info["ale.lives"]:
               dead = True
               start_life = info["ale.lives"]
-          reward = np.clip(reward, -1., 1.)
-          agent.replay_memory(history, action, reward, next_history, dead)
-          agent.train_replay()
-          if global_step % agent.update_target_rate == 0:
-              agent.update_target_model()
-          score += reward
-          if dead:
-              dead = False
-          else:
-              history = next_history 
-          if done:
-              if global_step > agent.train_start:
-                  stats = [score, agent.avg_q_max / float(step), step,agent.avg_loss / float(step)]
-                  for i in range(len(stats)):
-                      agent.sess.run(agent.update_ops[i], feed_dict={ agent.summary_placeholders[i]: float(stats[i])})
-                  summary_str = agent.sess.run(agent.summary_op)
-                  agent.summary_writer.add_summary(summary_str, e + 1)
-              print("episode:", e, "  score:", score, "  memory length:", len(agent.memory), "  epsilon:", agent.epsilon,"  global_step:", global_step, "  average_q:", agent.avg_q_max / float(step), "  average loss:", agent.avg_loss / float(step))
-              agent.avg_q_max, agent.avg_loss = 0, 0
-  if e % 1000 == 0:
-      agent.model.save_weights("./save_model/breakout_dqn.h5")

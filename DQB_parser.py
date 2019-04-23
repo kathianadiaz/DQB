@@ -71,32 +71,37 @@ def p_trainingBB(p):
 
 
 def p_trainactionsBB(p):
-    """trainactionsBB : PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN
-                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN
-                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN MODEL_CURRENT_STATUS OPEN_PAREN CLOSE_PAREN
-                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN MODEL_CURRENT_STATUS OPEN_PAREN CLOSE_PAREN"""
+    """trainactionsBB :  PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN MODEL_CURRENT_STATUS OPEN_PAREN CLOSE_PAREN
+                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN MODEL_CURRENT_STATUS OPEN_PAREN CLOSE_PAREN
+                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN MODEL_CURRENT_STATUS OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN
+                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN
+                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN"""
+
     ml.training()
+
     if len(p) == 13:
         ml.main(True)
         ml.predictmovesQL()
         ml.calculateQvalues(True)
         ml.generate()
-    if len(p) > 7:
+
+    if len(p) > 8 :
         if p[7] == 'DISPLAY_GAME':
-            ml.main(True)
-            ml.predictmovesQL()
-            ml.calculateQvalues(False)
-            ml.generate()
+                ml.main(True)
+                ml.predictmovesQL()
+                ml.calculateQvalues(False)
+                ml.generate()
         elif p[7] == 'MODEL_CURRENT_STATUS':
             ml.main(False)
             ml.predictmovesQL()
             ml.calculateQvalues(True)
             ml.generate()
     else:
-            ml.main(False)
-            ml.predictmovesQL()
-            ml.calculateQvalues(True)
-            ml.generate()
+         ml.main(False)
+         ml.predictmovesQL()
+         ml.calculateQvalues(False)
+         print('model in trining...')
+         ml.generate()
 
 
 
