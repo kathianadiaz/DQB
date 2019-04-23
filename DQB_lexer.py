@@ -210,8 +210,8 @@ def t_PREDICTIVE_LAYER(t):
     return t
 
 def t_SHOW_MODEL_SUMMARY(t):
-    r"""show_model_summary"""
-    t.value = 'show_model_summary'
+    r"""showModelSummary"""
+    t.value = 'showModelSummary'
     return t
 
 def t_MODEL_CURRENT_STATUS(t):
