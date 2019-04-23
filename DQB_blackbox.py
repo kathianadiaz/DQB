@@ -2,12 +2,11 @@ import DQB_parser as App
 import time
 
 
-print("Running \n")
-time.sleep(0.25)
+print("DQB blackbox initiated... \n")
 print("Processing Code...\n")
 time.sleep(0.25)
 
-file = 'script1.txt'
+file = 'script2.txt'
 
 
 App.translate(file)

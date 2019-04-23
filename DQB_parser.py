@@ -59,7 +59,8 @@ def p_invocations(p):
     """invocations : ADD OPEN_PAREN CONV_LAYER CLOSE_PAREN ADD OPEN_PAREN PREDICTIVE_LAYER CLOSE_PAREN
                    | ADD OPEN_PAREN CONV_LAYER CLOSE_PAREN ADD OPEN_PAREN PREDICTIVE_LAYER CLOSE_PAREN SHOW_MODEL_SUMMARY OPEN_PAREN CLOSE_PAREN"""
     ml.ConvLayers()
-    if len(p) == 12:
+    print(len(p))
+    if len(p) > 9:
         ml.PredLayersShow()
     else:
         ml.PredLayers()
@@ -71,32 +72,40 @@ def p_trainingBB(p):
 
 
 def p_trainactionsBB(p):
-    """trainactionsBB : PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN
-                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN
-                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN MODEL_CURRENT_STATUS OPEN_PAREN CLOSE_PAREN
-                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN MODEL_CURRENT_STATUS OPEN_PAREN CLOSE_PAREN"""
+    """trainactionsBB :  PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN MODEL_CURRENT_STATUS OPEN_PAREN CLOSE_PAREN
+                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN MODEL_CURRENT_STATUS OPEN_PAREN CLOSE_PAREN
+                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN MODEL_CURRENT_STATUS OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN
+                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN
+                      | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN"""
+
     ml.training()
+    print(len(p))
+    print(p[7])
+
     if len(p) == 13:
         ml.main(True)
         ml.predictmovesQL()
         ml.calculateQvalues(True)
         ml.generate()
-    if len(p) > 7:
+
+    if len(p) == 10 :
         if p[7] == 'DISPLAY_GAME':
-            ml.main(True)
-            ml.predictmovesQL()
-            ml.calculateQvalues(False)
-            ml.generate()
-        elif p[7] == 'MODEL_CURRENT_STATUS':
+                ml.main(True)
+                ml.predictmovesQL()
+                ml.calculateQvalues(False)
+                ml.generate()
+        elif p[7] == 'modelCurrentStatus':
             ml.main(False)
             ml.predictmovesQL()
             ml.calculateQvalues(True)
             ml.generate()
-    else:
-            ml.main(False)
-            ml.predictmovesQL()
-            ml.calculateQvalues(True)
-            ml.generate()
+    elif len(p) < 8:
+         ml.main(False)
+         ml.predictmovesQL()
+         ml.calculateQvalues(False)
+         print(len(p))
+         print('model in trining...')
+         ml.generate()
 
 
 

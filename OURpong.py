@@ -17,7 +17,7 @@ class PGAgent:
       self.rewards = []
       self.probs = []
       self.model = self._build_model()
-      self.model.summary()
+
   def _build_model(self):
       model = Sequential()
       model.add(Reshape((1, 80, 80), input_shape=(self.state_size,))) 
@@ -28,6 +28,7 @@ class PGAgent:
       model.add(Dense(self.action_size, activation='softmax'))
       opt = Adam(lr=self.learning_rate)
       model.compile(loss='categorical_crossentropy', optimizer=opt)
+      model.summary()
       return model
 
   def remember(self, state, action, prob, reward):
@@ -92,7 +93,7 @@ def run():
   agent = PGAgent(state_size, action_size)
   agent.load('./save_model/pong_reinforce.h5')
   while True:
-      #env.render()
+      env.render()
       cur_x = preprocess(state)
       x = cur_x - prev_x if prev_x is not None else np.zeros(state_size)
       prev_x = cur_x

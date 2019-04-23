@@ -12,6 +12,7 @@ main(){
 	NETWORK:{
                 add(ConvolutionalLayers)
 				add(PredictiveLayers)
+				showModelSummary()
 
 
 	}
@@ -20,6 +21,11 @@ main(){
 	        find_probabilities()
 			predict_moves()
 			fit()
+			displayGame()
+
+
+
+			
 
 
     }
