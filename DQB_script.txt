@@ -28,6 +28,8 @@ TRAINING:{
 
     predict_moves()
     calculateQ_Values()
+    modelCurrentStatus()
+
     
     }
 

@@ -78,6 +78,8 @@ def p_trainactionsBB(p):
                       | PREDICT_MOVES OPEN_PAREN CLOSE_PAREN CALCULATE_Q_VALUES OPEN_PAREN CLOSE_PAREN DISPLAY_GAME OPEN_PAREN CLOSE_PAREN"""
 
     ml.training()
+    print(len(p))
+    print(p[7])
 
     if len(p) == 13:
         ml.main(True)
@@ -85,21 +87,22 @@ def p_trainactionsBB(p):
         ml.calculateQvalues(True)
         ml.generate()
 
-    if len(p) > 8 :
+    if len(p) == 10 :
         if p[7] == 'DISPLAY_GAME':
                 ml.main(True)
                 ml.predictmovesQL()
                 ml.calculateQvalues(False)
                 ml.generate()
-        elif p[7] == 'MODEL_CURRENT_STATUS':
+        elif p[7] == 'modelCurrentStatus':
             ml.main(False)
             ml.predictmovesQL()
             ml.calculateQvalues(True)
             ml.generate()
-    else:
+    elif len(p) < 8:
          ml.main(False)
          ml.predictmovesQL()
          ml.calculateQvalues(False)
+         print(len(p))
          print('model in trining...')
          ml.generate()
 

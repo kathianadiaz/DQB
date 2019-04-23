@@ -7,7 +7,7 @@ time.sleep(0.25)
 print("Processing Code...\n")
 time.sleep(0.25)
 
-file = 'script1.txt'
+file = 'DQB_script.txt'
 
 
 App.translate(file)
