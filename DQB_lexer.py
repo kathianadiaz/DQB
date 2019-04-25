@@ -6,17 +6,13 @@ import ply.lex as lex
 tokens = [
 
     'INT',
-    'BOOLEAN',
     'FLOAT',
-    'CHARACTER',
-    'COMMA',
     'CLOSE_PAREN',
     'OPEN_PAREN',
     'CLOSE_BRACKET',
     'OPEN_BRACKET',
     'DOS_PUNTITOS',
     'EQUALS',
-    'DOT',
     'MAIN',
     'ENVIRONMENT',
     'PONG',
@@ -40,25 +36,18 @@ tokens = [
     'NO_STEPS',
     'ADD',
     'ACTION_SIZE',
-    'PREPARE',
     'EXECUTE',
     'CONV_LAYER',
     'PREDICTIVE_LAYER',
     'SHOW_MODEL_SUMMARY',
-    'NAME',
-    'CONDITIONAL'
-
+    'NAME'
 ]
 
 #Regular Expression Rules
 
-t_CHARACTER = r'[a-zA-Z]+_[a-zA-Z]+'
-
 t_INT = r'[[0-9]+'
 
 t_FLOAT = r'[[0-9]+[.][0-9]+'
-
-t_COMMA = r','
 
 t_OPEN_PAREN = r'\('
 
@@ -72,12 +61,10 @@ t_DOS_PUNTITOS = r':'
 
 t_EQUALS = r'='
 
-t_DOT = r'\.'
-
 t_ignore = ' \t\n'
 
 def t_error(t):
-    print('lol')
+    print('Syntax error in source code. Try again!')
 
 def t_MAIN(t):
     r"""main"""
@@ -190,10 +177,6 @@ def t_ACTION_SIZE(t):
     t.value = 'Action_Size'
     return t
 
-def t_PREPARE(t):
-    r"""PREPARE"""
-    t.value = 'PREPARE'
-    return t
 
 def t_EXECUTE(t):
     r"""Execute"""
