@@ -102,7 +102,7 @@ def p_trainactionsBB(p):
          ml.main(False)
          ml.predictmovesQL()
          ml.calculateQvalues(False)
-         print(len(p))
+    
          print('model in trining...')
          ml.generate()
 
