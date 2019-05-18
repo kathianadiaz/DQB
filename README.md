@@ -45,8 +45,7 @@ First, the user writes the DQN source code on a .txt file called DQB_script. The
 - Others: h5py, numpy, skimage, atari-py
 
 ## Video example
-<iframe width="1182" height="665" src="https://www.youtube.com/embed/uP0uPpyutjQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/watch?v=uP0uPpyutjQ&t=19s/0.jpg)](https://www.youtube.com/watch?v=uP0uPpyutjQ&t=19s)
 
 
 ## Final report 
