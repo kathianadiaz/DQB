@@ -1,0 +1,7 @@
+TensorFlow
+Keras
+Gym
+h5py
+numpy 
+skimage
+atari-py
