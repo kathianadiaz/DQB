@@ -46,6 +46,7 @@ First, the user writes the DQN source code on a .txt file called DQB_script. The
 
 ## Final report 
 
+To read the final report, find it in the repository by "Phase 3 - DQB.pdf" or use this link: https://github.com/kathianadiaz/DQB/blob/master/Phase%203%20-%20DQB.pdf 
 
 ## Developers
 
