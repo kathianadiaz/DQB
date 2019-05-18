@@ -18,13 +18,9 @@ Now you have everything to write in DQB!
 
 Instructions: 
 
-First, to get started, use the command: python3 DQB.py 
-
-Write the DQB source code on a .txt file called DQB_script. 
-
-Run the DQB_blackbox which initializes, compiles, and trains the agent. 
-
-Observe the agent's training process! You have the option to display the environment as it trains and the model's status episode by episode. 
+1. Write the DQB source code on a .txt file called DQB_script. 
+2. Run the DQB_blackbox which initializes, compiles, and trains the agent. 
+3. Observe the agent's training process! You have the option to display the environment as it trains and the model's status episode by episode. 
 
 ## Language Features
 
@@ -46,14 +42,16 @@ First, the user writes the DQN source code on a .txt file called DQB_script. The
 - Keras: Keras is a high-level neural networks API, written in Python and capable of running on top of TensorFlow, CNTK, or Theano. It was developed with a focus on enabling fast experimentation.   
 - Gym: Gym is a toolkit for developing and comparing reinforcement learning algorithms. It makes no assumptions about the structure of your agent, and is compatible with any numerical computation library, such as TensorFlow or Theano.
 - PLY: PLY is an implementation of lex and yacc parsing tools for Python
--Others: h5py, numpy, skimage, atari-py
+- Others: h5py, numpy, skimage, atari-py
 
 ## Video example
 
+You can watch the video example using this link: https://www.youtube.com/watch?v=uP0uPpyutjQ
 
 ## Final report 
 
-To read the final report, find it in the repository by "Phase 3 - DQB.pdf" or use this link: https://github.com/kathianadiaz/DQB/blob/master/Phase%203%20-%20DQB.pdf 
+The final report is in the repository by "Phase 3 - DQB.pdf".
+You can use this link: https://github.com/kathianadiaz/DQB/blob/master/Phase%203%20-%20DQB.pdf 
 
 ## Developers
 
